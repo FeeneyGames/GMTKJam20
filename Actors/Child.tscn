@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sprites/Demo/child.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Mover.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Actors/Child.cs" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 12.5, 12.5 )
+
+[node name="Child" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Mover" parent="." instance=ExtResource( 2 )]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mover"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Mover"]
+texture = ExtResource( 1 )

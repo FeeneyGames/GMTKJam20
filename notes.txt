@@ -1,0 +1,15 @@
+Goal is to try to stop children from destroying the house or hurting others
+
+Player actions
+    WASD-Move
+    Space-Carry child (only one at a time) and tend to them (clean diapers, bandaid, ect.)
+    Mouse-Stare at child (slows down that child)
+
+Child actions
+    Randomly move
+    Wander outside
+    Topple bookshelves
+    Turn on oven
+    Open door
+    Open drawers
+    Poop
