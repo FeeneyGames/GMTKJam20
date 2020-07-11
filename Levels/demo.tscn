@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Actors/Parent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Child.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Actors/Eye.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Environment/Vase.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
 
@@ -22,3 +24,8 @@ position = Vector2( 502.63, 143.407 )
 
 [node name="Child5" parent="." instance=ExtResource( 2 )]
 position = Vector2( 621.725, 308.703 )
+
+[node name="Eye" parent="." instance=ExtResource( 3 )]
+
+[node name="Vase" parent="." instance=ExtResource( 4 )]
+position = Vector2( 274.656, 250.773 )

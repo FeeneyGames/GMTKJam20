@@ -4,6 +4,7 @@ using System;
 public class Child : Node2D
 {
     public float speed = 2 * 25;
+    public bool watched = false;
     private Mover mover;
     private float moveTimer = 0;
     private Vector2 prevDir = Vector2.Zero;
@@ -29,7 +30,8 @@ public class Child : Node2D
             Vector2 randomDir = RandomVec();
             if(mover.GetSlideCount() > 0)
                 prevDir *= -1;
-            mover.linearVelocity = speed * (randomDir + (prevDir/2)).Normalized();
+            float curSpeed = watched ? speed/2 : speed;
+            mover.linearVelocity = curSpeed * (randomDir + (prevDir/2)).Normalized();
             // Update the state
             prevDir = (randomDir + (prevDir/2)).Normalized();
             moveTimer = (float)Godot.GD.RandRange(.5, 1.5);
