@@ -29,6 +29,7 @@ public class LevelHandler : Control
                 GetTree().ChangeScene("res://Levels/Title.tscn");
                 break;
             case 0:
+            case 6:
                 GetTree().ChangeScene("res://Levels/Select.tscn");
                 break;
             default:

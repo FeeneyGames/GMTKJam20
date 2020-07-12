@@ -1,8 +1,18 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/ButtonHandler.cs" type="Script" id=1]
 
 [node name="Select" type="Node2D"]
 
-[node name="Button" type="Button" parent="."]
+[node name="ButtonHandler" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button1" type="Button" parent="ButtonHandler"]
 margin_left = 75.0
 margin_top = 475.0
 margin_right = 125.0
@@ -11,3 +21,76 @@ text = "1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Button2" type="Button" parent="ButtonHandler"]
+margin_left = 225.0
+margin_top = 475.0
+margin_right = 275.0
+margin_bottom = 525.0
+text = "2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button3" type="Button" parent="ButtonHandler"]
+margin_left = 375.0
+margin_top = 475.0
+margin_right = 425.0
+margin_bottom = 525.0
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button4" type="Button" parent="ButtonHandler"]
+margin_left = 525.0
+margin_top = 475.0
+margin_right = 575.0
+margin_bottom = 525.0
+text = "4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button5" type="Button" parent="ButtonHandler"]
+margin_left = 675.0
+margin_top = 475.0
+margin_right = 725.0
+margin_bottom = 525.0
+text = "5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 325.0
+margin_top = 425.0
+margin_right = 464.0
+margin_bottom = 439.0
+text = "Click to Select a Level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 250.0
+margin_top = 75.0
+margin_right = 555.0
+margin_bottom = 157.0
+text = "Babysit for 30 seconds to win.
+
+Controls:
+
+Hover Mouse                             Watch Child
+Space                                        Carry/Drop Adjacent Child or Advance Level
+R                                                Retry Level
+Escape                                       Return to Level Select
+WASD                                        Move"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="ButtonHandler/Button1" to="ButtonHandler" method="_on_Button_pressed" binds= [ 1 ]]
+[connection signal="pressed" from="ButtonHandler/Button2" to="ButtonHandler" method="_on_Button_pressed" binds= [ 2 ]]
+[connection signal="pressed" from="ButtonHandler/Button3" to="ButtonHandler" method="_on_Button_pressed" binds= [ 3 ]]
+[connection signal="pressed" from="ButtonHandler/Button4" to="ButtonHandler" method="_on_Button_pressed" binds= [ 4 ]]
+[connection signal="pressed" from="ButtonHandler/Button5" to="ButtonHandler" method="_on_Button_pressed" binds= [ 5 ]]

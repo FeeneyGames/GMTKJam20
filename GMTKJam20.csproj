@@ -57,6 +57,7 @@
     <Compile Include="Actors\Eye.cs" />
     <Compile Include="Actors\Parent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\ButtonHandler.cs" />
     <Compile Include="Scripts\Destructible.cs" />
     <Compile Include="Scripts\Globals.cs" />
     <Compile Include="Scripts\LevelHandler.cs" />
