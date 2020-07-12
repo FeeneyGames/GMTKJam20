@@ -3,11 +3,12 @@ using System;
 
 public class Parent : Node2D
 {
-    public float speed = 5 * 25;
+    public float speed = 8 * 25;
     public bool carrying = false;
     private Vector2 babyOffset = new Vector2(0, 37.5f);
     private Mover mover;
     private RayCast2D rayCast;
+    private AnimationPlayer anim;
     private PackedScene childScene = (PackedScene)GD.Load("res://Actors/Child.tscn");
 
     // Called when the node enters the scene tree for the first time.
@@ -15,13 +16,21 @@ public class Parent : Node2D
     {
         mover = GetChild<Mover>(0);
         rayCast = ((Node2D)mover).GetChild<RayCast2D>(0);
+        anim = ((Node2D)mover).GetChild<AnimationPlayer>(1);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
-        InputMovement();
-        InputCarry();
+        if(!Globals.gameOver)
+        {
+            InputMovement();
+            InputCarry();
+        }
+        else
+        {
+            mover.linearVelocity = Vector2.Zero;
+        }
     }
 
     // Handles the movement from player input
@@ -60,6 +69,7 @@ public class Parent : Node2D
                     Node2D newChild = (Node2D)childScene.Instance();
                     newChild.Position = this.Position + mover.Position + babyOffset;
                     GetParent().AddChild(newChild);
+                    anim.Play("Walk");
                     carrying = false;
                 }
             }
@@ -73,6 +83,7 @@ public class Parent : Node2D
                     {
                         collider.GetParent().Free();
                         carrying = true;
+                        anim.Play("Carry");
                         break;
                     }
                 }

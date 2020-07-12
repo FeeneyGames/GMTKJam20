@@ -3,6 +3,7 @@ using System;
 
 public class Mover : KinematicBody2D
 {
+    public float speedMultiplier = 1;
     public Vector2 linearVelocity = Vector2.Zero;
     private Vector2 prevVelocity = Vector2.Zero;
 
@@ -21,7 +22,7 @@ public class Mover : KinematicBody2D
     public override void _PhysicsProcess(float delta)
     {
         // Averaging velocity vectors helps stop stuttering
-        MoveAndSlide((linearVelocity + prevVelocity)/2);
+        MoveAndSlide(speedMultiplier * (linearVelocity + prevVelocity)/2);
         prevVelocity = linearVelocity;
     }
 }

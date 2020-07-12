@@ -20,13 +20,13 @@ public class Eye : Node2D
 
     private void _on_Area2D_body_entered(Node body)
     {
-        if(body.GetParent().Name.BeginsWith("Child"))
-            body.GetParentOrNull<Child>().watched = true;
+        if(body.GetParent().Name.Contains("Child"))
+            body.GetParentOrNull<Child>().mover.speedMultiplier = .333f;
     }
 
     private void _on_Area2D_body_exited(Node body)
     {
-        if(body.GetParent().Name.BeginsWith("Child"))
-            body.GetParentOrNull<Child>().watched = false;
+        if(body.GetParent().Name.Contains("Child"))
+            body.GetParentOrNull<Child>().mover.speedMultiplier = 1;
     }
 }

@@ -3,39 +3,65 @@ using System;
 
 public class Child : Node2D
 {
-    public float speed = 2 * 25;
-    public bool watched = false;
-    private Mover mover;
+    public float speed = 3 * 25;
+    public const float SPEED_RATE = .25f;
+    public const float PATH_TIMER_MAX = 10;
+    public bool destroying = false;
+    public Mover mover;
+    private Vector2[] path;
+    private uint pathInd = 0;
     private float moveTimer = 0;
-    private Vector2 prevDir = Vector2.Zero;
+    private float pathTimer = 0;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         mover = GetChild<Mover>(0);
+        NewPath();
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
+        // Update path target
+        if((mover.GlobalPosition - path[pathInd]).Length() < 25)
+        {
+            pathInd += 1;
+            if(pathInd >= path.Length)
+            {
+                NewPath();
+            }
+        }
+        // Get new path if current one times out
+        pathTimer -= delta;
+        if(pathTimer <= 0)
+            NewPath();
+        // Slowly increase speed
+        speed += delta * SPEED_RATE;
         RandomMovement(delta);
     }
 
     private void RandomMovement(float delta)
     {
         moveTimer -= delta;
-        if(moveTimer <= 0)
+        if(destroying)
+            mover.linearVelocity = Vector2.Zero;
+        else if(moveTimer <= 0)
         {
             // Generate and apply direction
             Vector2 randomDir = RandomVec();
-            if(mover.GetSlideCount() > 0)
-                prevDir *= -1;
-            float curSpeed = watched ? speed/2 : speed;
-            mover.linearVelocity = curSpeed * (randomDir + (prevDir/2)).Normalized();
+            Vector2 pathDir = (path[pathInd] - mover.GlobalPosition).Normalized();
+            mover.linearVelocity = speed * (mover.GetSlideCount() > 0 ? randomDir : (pathDir + randomDir)).Normalized();
             // Update the state
-            prevDir = (randomDir + (prevDir/2)).Normalized();
-            moveTimer = (float)Godot.GD.RandRange(.5, 1.5);
+            moveTimer = (float)Godot.GD.RandRange(.5, 1);
         }
+    }
+
+    private void NewPath()
+    {
+        path = GetParent().GetChildOrNull<Pathfinding>(0).GetChildPath(mover.GlobalPosition);
+        pathInd = 0;
+        pathTimer = PATH_TIMER_MAX;
     }
 
     private Vector2 RandomVec()

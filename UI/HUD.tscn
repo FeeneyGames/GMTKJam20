@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/Timer.cs" type="Script" id=1]
+[ext_resource path="res://UI/GameOver.cs" type="Script" id=2]
+
+[node name="HUD" type="Node2D"]
+z_index = 10
+
+[node name="Timer" type="Label" parent="."]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 74.0
+margin_bottom = 20.0
+text = "Time: 0.00"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameOver" type="Label" parent="."]
+visible = false
+margin_left = 343.0
+margin_top = 5.0
+margin_right = 456.0
+margin_bottom = 36.0
+text = "     GAME OVER
+Press R to Restart"
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
