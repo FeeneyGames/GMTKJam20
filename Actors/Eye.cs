@@ -3,12 +3,10 @@ using System;
 
 public class Eye : Node2D
 {
-    private AnimationPlayer animPlayer;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        animPlayer = GetChildOrNull<AnimationPlayer>(0);
         Input.SetMouseMode(Input.MouseMode.Hidden);
     }
 
