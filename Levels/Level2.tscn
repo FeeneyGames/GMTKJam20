@@ -39,16 +39,13 @@ navpoly = SubResource( 1 )
 position = Vector2( 425, 325 )
 
 [node name="Child" parent="." instance=ExtResource( 5 )]
-position = Vector2( 225, 175 )
+position = Vector2( 175, 275 )
 
 [node name="Child2" parent="." instance=ExtResource( 5 )]
-position = Vector2( 575, 425 )
+position = Vector2( 625, 325 )
 
 [node name="Child3" parent="." instance=ExtResource( 5 )]
-position = Vector2( 575, 175 )
-
-[node name="Child4" parent="." instance=ExtResource( 5 )]
-position = Vector2( 225, 425 )
+position = Vector2( 375, 275 )
 
 [node name="Eye" parent="." instance=ExtResource( 4 )]
 

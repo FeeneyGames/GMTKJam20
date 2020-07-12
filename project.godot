@@ -16,12 +16,13 @@ _global_script_class_icons={
 [application]
 
 config/name="GMTKJam20"
-run/main_scene="res://Levels/demo.tscn"
+run/main_scene="res://Levels/Title.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Globals="*res://Scripts/Globals.cs"
+LevelHandler="*res://Scripts/LevelHandler.tscn"
 
 [display]
 

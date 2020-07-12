@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Environment/Tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://Actors/Eye.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Actors/Child.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scripts/Pathfinding.tscn" type="PackedScene" id=4]
-[ext_resource path="res://UI/HUD.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Environment/Vase.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Environment/Vase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://UI/HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Actors/Eye.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Actors/Child.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scripts/Pathfinding.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Actors/Parent.tscn" type="PackedScene" id=7]
 
 [sub_resource type="NavigationPolygon" id=1]
@@ -15,15 +15,12 @@ outlines = [ PoolVector2Array( 75, 75, 725, 75, 725, 525, 75, 525 ) ]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Pathfinding" parent="." instance=ExtResource( 4 )]
+[node name="Pathfinding" parent="." instance=ExtResource( 6 )]
 
 [node name="Destructibles" type="Node2D" parent="Pathfinding"]
 
-[node name="Vase" parent="Pathfinding/Destructibles" instance=ExtResource( 6 )]
-position = Vector2( 675, 125 )
-
-[node name="Vase2" parent="Pathfinding/Destructibles" instance=ExtResource( 6 )]
-position = Vector2( 175, 425 )
+[node name="Vase" parent="Pathfinding/Destructibles" instance=ExtResource( 2 )]
+position = Vector2( 125, 125 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Pathfinding"]
 visible = false
@@ -32,15 +29,18 @@ navpoly = SubResource( 1 )
 [node name="Parent" parent="." instance=ExtResource( 7 )]
 position = Vector2( 425, 275 )
 
-[node name="Child" parent="." instance=ExtResource( 3 )]
-position = Vector2( 75, 525 )
+[node name="Child" parent="." instance=ExtResource( 5 )]
+position = Vector2( 425, 475 )
 
-[node name="Child2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 575, 325 )
+[node name="Child2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 725, 275 )
 
-[node name="Eye" parent="." instance=ExtResource( 2 )]
+[node name="Child3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 425, 125 )
 
-[node name="HUD" parent="." instance=ExtResource( 5 )]
+[node name="Eye" parent="." instance=ExtResource( 4 )]
+
+[node name="HUD" parent="." instance=ExtResource( 3 )]
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2( 2, 2 )

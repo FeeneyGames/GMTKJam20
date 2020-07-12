@@ -59,6 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scripts\Destructible.cs" />
     <Compile Include="Scripts\Globals.cs" />
+    <Compile Include="Scripts\LevelHandler.cs" />
     <Compile Include="Scripts\Mover.cs" />
     <Compile Include="Scripts\Pathfinding.cs" />
     <Compile Include="UI\GameOver.cs" />
