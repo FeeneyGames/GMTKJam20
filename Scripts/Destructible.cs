@@ -5,6 +5,7 @@ public class Destructible : StaticBody2D
 {
     public float destruction = 0;
     public const float DURABILITY = 5;
+    public bool destroyed = false;
     private uint childCount = 0;
     private AnimationPlayer anim;
 
@@ -17,7 +18,16 @@ public class Destructible : StaticBody2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
-        if(childCount > 0)
+        if(destruction >= DURABILITY)
+        {
+            Globals.gameOver = true;
+            if(!destroyed)
+            {
+                anim.Play("Destroyed");
+                destroyed = true;
+            }
+        }
+        else if(childCount > 0)
         {
             destruction += delta;
             anim.Play("Destroying");
@@ -26,11 +36,6 @@ public class Destructible : StaticBody2D
         {
             destruction -= delta/3;
             anim.Play("Damaged");
-        }
-        if(destruction >= DURABILITY)
-        {
-            Globals.gameOver = true;
-            anim.Play("Destroyed");
         }
         else if(destruction <= 0)
             anim.Play("Fixed");
